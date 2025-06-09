@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Prashant's Marriage Criteria - Sacred Mandala</title>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Poppins:wght@300;500;700&display=swap");
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: "Poppins", sans-serif;
+                background: linear-gradient(135deg, #fff3e0, #f9fbe7);
+                min-height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: #333;
+                padding: 20px;
+                perspective: 1000px;
+            }
+
+            .container {
+                width: 100%;
+                max-width: 900px;
+                padding: 60px 30px 30px;
+                margin: 0 auto;
+            }
+
+            h1 {
+                text-align: center;
+                font-family: "Cormorant Garamond", serif;
+                font-size: 36px;
+                margin-bottom: 80px;
+                color: #4a148c;
+                position: relative;
+                padding-bottom: 20px;
+            }
+
+            h1::after {
+                content: "❤";
+                position: absolute;
+                font-size: 24px;
+                bottom: -35px;
+                left: 50%;
+                transform: translateX(-50%);
+                color: #e91e63;
+            }
+
+            h1::before {
+                content: "✨";
+                position: absolute;
+                font-size: 26px;
+                top: -40px;
+                left: 50%;
+                transform: translateX(-50%);
+                color: #ff9800;
+            }
+
+            .mandala-container {
+                position: relative;
+                width: 600px;
+                height: 600px;
+                margin: 0 auto;
+                transform-style: preserve-3d;
+                animation: float 10s ease-in-out infinite;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            @keyframes float {
+                0%,
+                100% {
+                    transform: translateY(0) rotate(0deg);
+                }
+                50% {
+                    transform: translateY(-10px) rotate(1deg);
+                }
+            }
+
+            .center {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 140px;
+                height: 140px;
+                background: #7b1fa2;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                text-align: center;
+                font-weight: 700;
+                box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+                z-index: 10;
+                animation: pulse 2s ease-in-out infinite;
+            }
+
+            @keyframes pulse {
+                0%,
+                100% {
+                    transform: translate(-50%, -50%) scale(1);
+                }
+                50% {
+                    transform: translate(-50%, -50%) scale(1.05);
+                }
+            }
+
+            .center p {
+                padding: 10px;
+                font-size: 12px;
+                max-width: 95%;
+            }
+
+            .circle {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .criteria {
+                position: absolute;
+                width: 110px;
+                height: 110px;
+                border-radius: 50%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                color: white;
+                font-weight: 500;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+                transition: all 0.3s ease;
+                cursor: pointer;
+                overflow: visible;
+                z-index: 5;
+                padding: 10px 5px;
+                border: 2px solid rgba(255, 255, 255, 0.5);
+            }
+
+            .criteria:hover {
+                transform: scale(1.35) translateZ(20px);
+                z-index: 20;
+                box-shadow:
+                    0 0 0 3px currentColor,
+                    0 10px 25px rgba(0, 0, 0, 0.3);
+                width: 130px;
+                height: 130px;
+            }
+
+            .criteria:hover .icon {
+                font-size: 22px;
+            }
+
+            .criteria:hover h3 {
+                font-size: 16px;
+            }
+
+            .criteria:hover p {
+                font-size: 12px;
+                max-width: 95%;
+                padding: 0 5px;
+            }
+
+            .criteria h3 {
+                font-size: 15px;
+                margin-bottom: 4px;
+                line-height: 1.1;
+                padding: 0;
+                text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+                white-space: nowrap;
+            }
+
+            .criteria p {
+                font-size: 11px;
+                padding: 0 5px;
+                width: 100%;
+                line-height: 1.2;
+                margin: 0;
+                word-wrap: break-word;
+                transition: all 0.3s ease;
+                display: block;
+            }
+
+            .criteria .icon {
+                font-size: 20px;
+                margin-bottom: 4px;
+                transition: all 0.3s ease;
+                text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            }
+
+            /* Special styling for criteria with longer text */
+            .c2 p,
+            .c6 p,
+            .c7 p {
+                font-size: 10px;
+                line-height: 1.1;
+                display: block !important;
+                width: 100% !important;
+                visibility: visible !important;
+            }
+
+            /* Circle layout positions - perfectly aligned in a circle */
+            .c1 {
+                transform: translate(-50%, -50%) rotate(0deg) translate(230px)
+                    rotate(0deg);
+                background: #ff5722;
+                box-shadow:
+                    0 0 0 2px #ff5722,
+                    0 5px 15px rgba(0, 0, 0, 0.2);
+            }
+            .c2 {
+                transform: translate(-50%, -50%) rotate(45deg) translate(230px)
+                    rotate(-45deg);
+                background: #ff9800;
+                width: 120px;
+                height: 120px;
+                box-shadow:
+                    0 0 0 2px #ff9800,
+                    0 5px 15px rgba(0, 0, 0, 0.2);
+            }
+            .c3 {
+                transform: translate(-50%, -50%) rotate(90deg) translate(230px)
+                    rotate(-90deg);
+                background: #ffc107;
+                box-shadow:
+                    0 0 0 2px #ffc107,
+                    0 5px 15px rgba(0, 0, 0, 0.2);
+            }
+            .c4 {
+                transform: translate(-50%, -50%) rotate(135deg) translate(230px)
+                    rotate(-135deg);
+                background: #8bc34a;
+                box-shadow:
+                    0 0 0 2px #8bc34a,
+                    0 5px 15px rgba(0, 0, 0, 0.2);
+            }
+            .c5 {
+                transform: translate(-50%, -50%) rotate(180deg) translate(230px)
+                    rotate(-180deg);
+                background: #4caf50;
+                box-shadow:
+                    0 0 0 2px #4caf50,
+                    0 5px 15px rgba(0, 0, 0, 0.2);
+            }
+            .c6 {
+                transform: translate(-50%, -50%) rotate(225deg) translate(230px)
+                    rotate(-225deg);
+                background: #009688;
+                width: 120px;
+                height: 120px;
+                box-shadow:
+                    0 0 0 2px #009688,
+                    0 5px 15px rgba(0, 0, 0, 0.2);
+            }
+            .c7 {
+                transform: translate(-50%, -50%) rotate(270deg) translate(230px)
+                    rotate(-270deg);
+                background: #3f51b5;
+                width: 120px;
+                height: 120px;
+                box-shadow:
+                    0 0 0 2px #3f51b5,
+                    0 5px 15px rgba(0, 0, 0, 0.2);
+            }
+            .c8 {
+                transform: translate(-50%, -50%) rotate(315deg) translate(230px)
+                    rotate(-315deg);
+                background: #673ab7;
+                box-shadow:
+                    0 0 0 2px #673ab7,
+                    0 5px 15px rgba(0, 0, 0, 0.2);
+            }
+
+            .outer-circle {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 600px;
+                height: 600px;
+                border: 2px dashed rgba(123, 31, 162, 0.5);
+                border-radius: 50%;
+                animation: rotate 180s linear infinite;
+            }
+
+            .middle-circle {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 450px;
+                height: 450px;
+                border: 2px dashed rgba(123, 31, 162, 0.3);
+                border-radius: 50%;
+                animation: rotate 120s linear infinite reverse;
+            }
+
+            .inner-circle {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 300px;
+                height: 300px;
+                border: 2px dashed rgba(123, 31, 162, 0.2);
+                border-radius: 50%;
+                animation: rotate 90s linear infinite;
+            }
+
+            @keyframes rotate {
+                0% {
+                    transform: translate(-50%, -50%) rotate(0deg);
+                }
+                100% {
+                    transform: translate(-50%, -50%) rotate(360deg);
+                }
+            }
+
+            .connecting-lines {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+            }
+
+            /* Additional decorative elements */
+            .outer-circle::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 610px;
+                height: 610px;
+                border: 1px solid rgba(123, 31, 162, 0.2);
+                border-radius: 50%;
+            }
+
+            .mandala-bg {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 600px;
+                height: 600px;
+                background: radial-gradient(
+                    circle,
+                    rgba(255, 255, 255, 0) 0%,
+                    rgba(255, 255, 255, 0) 35%,
+                    rgba(233, 30, 99, 0.1) 100%
+                );
+                border-radius: 50%;
+                z-index: -1;
+            }
+
+            .description {
+                margin-top: 30px;
+                text-align: center;
+                font-size: 14px;
+                color: #555;
+                line-height: 1.6;
+            }
+
+            @media (max-width: 800px) {
+                .mandala-container {
+                    transform: scale(0.8);
+                    margin-top: -30px;
+                    margin-bottom: -30px;
+                }
+                h1 {
+                    margin-bottom: 70px;
+                }
+            }
+
+            @media (max-width: 600px) {
+                .mandala-container {
+                    transform: scale(0.6);
+                    margin-top: -60px;
+                    margin-bottom: -60px;
+                }
+                .criteria {
+                    border-width: 3px;
+                }
+                h1 {
+                    margin-bottom: 60px;
+                    font-size: 32px;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .mandala-container {
+                    transform: scale(0.45);
+                    margin-top: -100px;
+                    margin-bottom: -100px;
+                }
+                h1 {
+                    font-size: 28px;
+                    margin-bottom: 55px;
+                }
+                .container {
+                    padding-top: 40px;
+                }
+                .criteria h3 {
+                    font-size: 14px;
+                }
+                .criteria p {
+                    font-size: 10px;
+                }
+                .c2 p,
+                .c6 p,
+                .c7 p {
+                    font-size: 9px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>The Sacred Journey to Finding "The One"</h1>
+            <div style="height: 20px; clear: both"></div>
+
+            <div class="mandala-container">
+                <div class="mandala-bg"></div>
+                <div class="outer-circle"></div>
+                <div class="middle-circle"></div>
+                <div class="inner-circle"></div>
+                <svg
+                    class="connecting-lines"
+                    width="600"
+                    height="600"
+                    viewBox="-300 -300 600 600"
+                >
+                    <path
+                        d="M0,0 L230,0"
+                        stroke="rgba(123, 31, 162, 0.2)"
+                        stroke-width="1"
+                    />
+                    <path
+                        d="M0,0 L162.63,162.63"
+                        stroke="rgba(123, 31, 162, 0.2)"
+                        stroke-width="1"
+                    />
+                    <path
+                        d="M0,0 L0,230"
+                        stroke="rgba(123, 31, 162, 0.2)"
+                        stroke-width="1"
+                    />
+                    <path
+                        d="M0,0 L-162.63,162.63"
+                        stroke="rgba(123, 31, 162, 0.2)"
+                        stroke-width="1"
+                    />
+                    <path
+                        d="M0,0 L-230,0"
+                        stroke="rgba(123, 31, 162, 0.2)"
+                        stroke-width="1"
+                    />
+                    <path
+                        d="M0,0 L-162.63,-162.63"
+                        stroke="rgba(123, 31, 162, 0.2)"
+                        stroke-width="1"
+                    />
+                    <path
+                        d="M0,0 L0,-230"
+                        stroke="rgba(123, 31, 162, 0.2)"
+                        stroke-width="1"
+                    />
+                    <path
+                        d="M0,0 L162.63,-162.63"
+                        stroke="rgba(123, 31, 162, 0.2)"
+                        stroke-width="1"
+                    />
+                </svg>
+
+                <div class="center">
+                    <p>"Hare Krishna, I'm Prashant. Let's connect?"</p>
+                </div>
+
+                <div class="criteria c1">
+                    <div class="icon">👑</div>
+                    <h3>Caste</h3>
+                    <p>Brahmin</p>
+                </div>
+
+                <div class="criteria c2">
+                    <div class="icon">🗺️</div>
+                    <h3>Region</h3>
+                    <p style="visibility: visible; display: block">
+                        Hindi Speaking<br />(North/Central)
+                    </p>
+                </div>
+
+                <div class="criteria c3">
+                    <div class="icon">🧬</div>
+                    <h3>Gotra</h3>
+                    <p>Non Shandilya</p>
+                </div>
+
+                <div class="criteria c4">
+                    <div class="icon">✨</div>
+                    <h3>Manglik</h3>
+                    <p>No</p>
+                </div>
+
+                <div class="criteria c5">
+                    <div class="icon">🔮</div>
+                    <h3>Horoscope</h3>
+                    <p>Decent Score</p>
+                </div>
+
+                <div class="criteria c6">
+                    <div class="icon">🎓</div>
+                    <h3>Education</h3>
+                    <p style="visibility: visible; display: block">
+                        Undergrad+<br />& Street Smart
+                    </p>
+                </div>
+
+                <div class="criteria c7">
+                    <div class="icon">💪</div>
+                    <h3>Physique</h3>
+                    <p style="visibility: visible; display: block">
+                        Height, Weight<br />& Health
+                    </p>
+                </div>
+
+                <div class="criteria c8">
+                    <div class="icon">👪</div>
+                    <h3>Family</h3>
+                    <p>Thoughts should match</p>
+                </div>
+            </div>
+
+            <div class="description">
+                <p>
+                    Hare Krishna!<br />
+                    This sacred mandala represents Prashant's journey to finding
+                    the devotee partner. Each circle represents a criterion,
+                    arranged in order of importance from the outer rings inward,
+                    leading to the ultimate connection at the center.
+                </p>
+                <p
+                    style="
+                        margin-top: 8px;
+                        font-style: italic;
+                        font-size: 12px;
+                        color: #666;
+                    "
+                >
+                    Hover over circles!
+                </p>
+            </div>
+        </div>
+    </body>
+</html>
